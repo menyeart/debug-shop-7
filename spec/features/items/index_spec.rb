@@ -15,7 +15,6 @@ RSpec.describe "Items Index Page" do
     it "I can see a list of all of the items "do
 
       visit '/items'
-
       within "#item-#{@chain.id}" do
         expect(page).to have_content("Chain")
         expect(page).to have_content("It'll never break!")
