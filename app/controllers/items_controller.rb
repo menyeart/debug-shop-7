@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
 
   def create
     merchant = Merchant.find(params[:merchant_id])
-    Item.create(item_params)
+    Item.create!(item_params)
     redirect_to "/merchants/#{merchant.id}/items"
   end
 
@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
   def update
     item = Item.find(params[:id])
     item.update(item_params)
-    redirect_to "/items/params[:id]"
+    redirect_to "/items/#{item.id}"
   end
 
   def index
@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.permit(:name, :description, :price, :image, :inventory)
+    params.permit(:name, :description, :price, :image, :inventory, :merchant_id)
   end
 
 
